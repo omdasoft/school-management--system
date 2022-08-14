@@ -51,8 +51,8 @@
                                         <td><?php echo $row['address']; ?></td>
                                         <td><?php echo $row['year']; ?></td>
                                         <td><?php echo $row['date']; ?></td>
+                                        <td><a href="edit-student.php?stud_no=<?php echo $row['stud_no'] ?>" class="btn btn-warning btn-sm">Edit</a></td>
                                         <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
-                                        <td><a href="#" class="btn btn-warning btn-sm">Edit</a></td>
                                     </tr>
                                 <?php } //end foreach ?>
                             <?php } //end if ?>

@@ -3,7 +3,7 @@
     include('includes/db.php');
     if(isset($_POST['submit'])) {
         $f_name = $education = $job = $work_location = $f_address = $mobile = "";
-        $stud_name = $birth_date = $birth_place = $stud_address = $year = $religion = "";
+        $stud_name = $birth_date = $birth_place = $stud_address = $year = $religon = "";
         //get father data
         $f_name = test_input($_POST['f_name']);
         $education = test_input($_POST['education']);
@@ -18,7 +18,7 @@
         $birth_place = test_input($_POST['birth_place']);
         $stud_address = test_input($_POST['stud_address']);
         $year = test_input($_POST['year']);
-        $religion = test_input($_POST['religion']);
+        $religon = test_input($_POST['religon']);
         try{
             $con->beginTransaction();
             //insert father data with validation
@@ -30,7 +30,7 @@
             //insert student data
             $sql = "INSERT into students (stud_name,birth_date,birth_place,address,religon,year,date,f_id) values (?,?,?,?,?,?,?,?)";
             $stmt = $con->prepare($sql);
-            $stmt->execute(array($stud_name,$birth_date,$birth_place,$stud_address,$religion,$year,$date,$f_id));
+            $stmt->execute(array($stud_name,$birth_date,$birth_place,$stud_address,$religon,$year,$date,$f_id));
             $con->commit();
         }catch (Exception $e){
             $con->rollback();
