@@ -24,7 +24,7 @@
                         mobile: {
                             required: true,
                             number: true,
-                            minlength: 11
+                            minlength: 10
                         },
                         stud_name: {
                             required: true
@@ -61,7 +61,7 @@
                         mobile: {
                             required: "mobile field is required",
                             number: "mobile filed must be number",
-                            minlength: "mobile filed must be at least 11 numbers"
+                            minlength: "mobile filed must be at least 10 numbers"
                         },
                         stud_name: {
                             required: "student name field is required"

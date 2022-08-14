@@ -40,13 +40,13 @@
                 <div class="container-fluid">
                     <div class="card card-info">
                         <div class="card-body">
-                            <form method="post" action="insert-student.php" id="regForm">
+                            <form method="post" action="update-student.php" id="regForm">
                                 <fieldset>
                                     <legend><h3>Father Info</h3></legend>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Father Name</label>
-                                            <input type="text" class="form-control" name="f_name" id="f_name" placeholder="Father Name" value="<?php echo $row['stud_name'] ?>">
+                                            <input type="text" class="form-control" name="f_name" id="f_name" placeholder="Father Name" value="<?php echo $row['f_name'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="education">Education</label>
@@ -109,6 +109,9 @@
                                         </div>
                                     </div>
                                 </fieldset>
+                                <input type="hidden" name="f_no" value="<?php echo $row['f_no']; ?>">
+                                <input type="hidden" name="stud_no" value="<?php echo $row['stud_no']; ?>">
+
                                 <button type="submit" name="submit" class="btn btn-success">Update</button>
                             </form>
                         </div>
