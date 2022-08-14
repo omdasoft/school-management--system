@@ -32,6 +32,9 @@
                     $num = $stmt->rowCount();
                     if($num == 0)
                         header('Location: students.php');
+                    $stmt = $con->prepare("SELECT * FROM class order by id asc");
+                    $stmt->execute();
+                    $classes = $stmt->fetchALL();
                 }
                 
              ?>
@@ -105,6 +108,14 @@
                                                 <option value="<?php $row['religon'] ?>" selected><?php if($row['religon'] == '1') {echo "Muslim";}else{echo "Christian";} ?></option>
                                                 <option value="1">Muslim</option>
                                                 <option value="2">Christian</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Select Class</label>
+                                            <select class="form-control" name="class_id">
+                                                <?php foreach($classes as $class) { ?>
+                                                    <option value="<?php echo $class['id']; ?>" <?php if($class['id'] == $row['class_id']) {echo "selected";}else{echo "";} ?>><?php echo $class['name']; ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                     </div>

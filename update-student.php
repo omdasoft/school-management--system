@@ -20,6 +20,7 @@
         $stud_address = test_input($_POST['stud_address']);
         $year = test_input($_POST['year']);
         $religon = test_input($_POST['religon']);
+        $class_id = test_input($_POST['class_id']);
         try{
             $con->beginTransaction();
             //update father data with validation
@@ -28,9 +29,9 @@
             $stmt->execute(array($f_name,$job,$education,$work_location,$f_address,$mobile,$f_no));
     
             //update student data
-            $sql = "UPDATE students SET stud_name = ?,birth_date = ?,birth_place = ?,address = ?,religon = ?,year = ?,f_id = ? WHERE stud_no = ?";
+            $sql = "UPDATE students SET stud_name = ?,birth_date = ?,birth_place = ?,address = ?,religon = ?,year = ?,f_id = ?, class_id = ? WHERE stud_no = ?";
             $stmt = $con->prepare($sql);
-            $stmt->execute(array($stud_name,$birth_date,$birth_place,$stud_address,$religon,$year,$f_no,$stud_no));
+            $stmt->execute(array($stud_name,$birth_date,$birth_place,$stud_address,$religon,$year,$f_no,$class_id,$stud_no));
             $con->commit();
         }catch (Exception $e){
             $con->rollback();

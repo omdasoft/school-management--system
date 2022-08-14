@@ -19,6 +19,7 @@
         $stud_address = test_input($_POST['stud_address']);
         $year = test_input($_POST['year']);
         $religon = test_input($_POST['religon']);
+        $class_id = test_input($_POST['class_id']);
         try{
             $con->beginTransaction();
             //insert father data with validation
@@ -28,9 +29,9 @@
             //get father id 
             $f_id = $con->lastInsertId();
             //insert student data
-            $sql = "INSERT into students (stud_name,birth_date,birth_place,address,religon,year,date,f_id) values (?,?,?,?,?,?,?,?)";
+            $sql = "INSERT into students (stud_name,birth_date,birth_place,address,religon,year,date,f_id,class_id) values (?,?,?,?,?,?,?,?,?)";
             $stmt = $con->prepare($sql);
-            $stmt->execute(array($stud_name,$birth_date,$birth_place,$stud_address,$religon,$year,$date,$f_id));
+            $stmt->execute(array($stud_name,$birth_date,$birth_place,$stud_address,$religon,$year,$date,$f_id,$class_id));
             $con->commit();
         }catch (Exception $e){
             $con->rollback();

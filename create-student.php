@@ -7,7 +7,12 @@
 
         <!-- Main Sidebar Container -->
         <?php require_once('includes/sidebar.php'); ?>
-
+        <?php require_once('includes/db.php'); ?>
+        <?php
+            $stmt = $con->prepare("SELECT * FROM class order by id asc");
+            $stmt->execute();
+            $rows = $stmt->fetchALL();
+        ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -90,6 +95,14 @@
                                             <select class="form-control" name="religion">
                                                 <option value="1" selected>Muslim</option>
                                                 <option value="2">Christian</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Select Class</label>
+                                            <select class="form-control" name="class_id">
+                                                <?php foreach($rows as $row) { ?>
+                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                     </div>
