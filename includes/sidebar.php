@@ -29,6 +29,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="classes.php" class="nav-link">
+              <i class="nav-icon fa fa-cube"></i>
+              <p>
+                Classes                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="students.php" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
+              <p>
+                Subjects               
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

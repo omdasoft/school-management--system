@@ -2,7 +2,6 @@
     //error_reporting(0);
     include('includes/db.php');
     if(isset($_POST['submit'])) {
-        var_dump($_POST);
         //get father data
         $f_no = $_POST['f_no'];
         $f_name = test_input($_POST['f_name']);
