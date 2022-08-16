@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Classes</h1>
+                    <h1 class="m-0 text-dark">Subjects</h1>
                 </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -23,52 +23,53 @@
             <!-- /.content-header -->
             <?php require_once('includes/db.php'); ?>
             <?php
-               $stmt = $con->prepare("SELECT * FROM class order by id desc");
+               $stmt = $con->prepare("SELECT * FROM subjects order by id desc");
                $stmt->execute();
-               $classes = $stmt->fetchALL();
+               $subjects = $stmt->fetchALL();
                $num = $stmt->rowCount();
              ?>
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <table id="class" class="table table-bordered table-hover">
+                    <?php if(isset($_GET['message'])) {?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Warning!</strong> <?php echo $_GET['message']; ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php }?>
+                    <table id="subject" class="table table-bordered table-hover">
                         <thead>
-                            <tr role="row">
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Class Name</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">#</th>
+                            <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Subject No</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Subject Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">#</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">#</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if($num > 0) {  ?>
-                                <?php foreach($classes as $class) { ?>
-                                    <?php 
-                                        $sql = "SELECT * FROM students WHERE class_id = ?";
-                                        $stmt = $con->prepare($sql);
-                                        $stmt->execute(array($class['id']));
-                                        $count = $stmt->rowCount();
-                                    ?>
+                                <?php foreach($subjects as $subject) { ?>
                                     <tr role="row" class="odd">
-                                        <td><?php echo $class['name']; ?></td>
-                                        <td><a href="class-subjects.php?class_no=<?php echo $class['id'] ?>" class="btn btn-success btn-sm">Manage Subjects</a></td>
-                                        <td><a href="edit-class.php?class_no=<?php echo $class['id'] ?>" class="btn btn-warning btn-sm">Edit</a></td>
-                                        <td><a href="delete-class.php?class_no=<?php echo $class['id'] ?>" class="btn btn-danger btn-sm <?php if($count > 0){echo "disabled";}else{echo "";} ?>">Delete</a></td>
+                                        <td class="sorting_1"><?php echo $subject['id']; ?></td>
+                                        <td><?php echo $subject['name']; ?></td>
+                                        <td><a href="edit-subject.php?subject_no=<?php echo $subject['id'] ?>" class="btn btn-warning btn-sm">Edit</a></td>
+                                        <td><a href="delete-subject.php?subject_no=<?php echo $subject['id'] ?>" class="btn btn-danger btn-sm">Delete</a></td>
                                     </tr>
                                 <?php } //end foreach ?>
                             <?php } //end if ?>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th rowspan="1" colspan="1">Class Name</th>
-                                <th rowspan="1" colspan="1">#</th>
+                                <th rowspan="1" colspan="1">Subject No</th>
+                                <th rowspan="1" colspan="1">Name</th>
                                 <th rowspan="1" colspan="1">#</th>
                                 <th rowspan="1" colspan="1">#</th>
                             </tr>
                         </tfoot>
                     </table>
                     <div class="mt-20">
-                        <a href="create-class.php" class="btn btn-success">Create New</a>
+                        <a href="create-subject.php" class="btn btn-success">Create New</a>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
@@ -86,7 +87,7 @@
         <?php require_once('includes/partials/scripts.php'); ?>
         <script>
             $(function () {
-                $('#class').DataTable();
+                $('#subject').DataTable();
             });
         </script>
     </body>

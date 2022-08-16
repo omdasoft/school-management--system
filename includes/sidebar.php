@@ -38,7 +38,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="students.php" class="nav-link">
+            <a href="subjects.php" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
               <p>
                 Subjects               
