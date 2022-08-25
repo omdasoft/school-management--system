@@ -31,6 +31,14 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
+                    <?php if(isset($_GET['message'])) {?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Warning!</strong> <?php echo $_GET['message']; ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php }?>
                     <table id="class" class="table table-bordered table-hover">
                         <thead>
                             <tr role="row">

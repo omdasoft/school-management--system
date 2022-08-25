@@ -41,7 +41,7 @@
                     <?php }?>
                     <table id="subject" class="table table-bordered table-hover">
                         <thead>
-                            <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Subject No</th>
+                            <tr role="row">
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Subject Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">#</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">#</th>
@@ -51,7 +51,6 @@
                             <?php if($num > 0) {  ?>
                                 <?php foreach($subjects as $subject) { ?>
                                     <tr role="row" class="odd">
-                                        <td class="sorting_1"><?php echo $subject['id']; ?></td>
                                         <td><?php echo $subject['name']; ?></td>
                                         <td><a href="edit-subject.php?subject_no=<?php echo $subject['id'] ?>" class="btn btn-warning btn-sm">Edit</a></td>
                                         <td><a href="delete-subject.php?subject_no=<?php echo $subject['id'] ?>" class="btn btn-danger btn-sm">Delete</a></td>
@@ -61,7 +60,6 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th rowspan="1" colspan="1">Subject No</th>
                                 <th rowspan="1" colspan="1">Name</th>
                                 <th rowspan="1" colspan="1">#</th>
                                 <th rowspan="1" colspan="1">#</th>

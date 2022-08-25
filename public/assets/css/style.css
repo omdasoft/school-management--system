@@ -1,0 +1,8 @@
+.login-card{
+    width: 500px;
+    margin: 50px 100px;
+    text-align: center;
+}
+.login-card .form-group{
+    text-align: left;
+}
