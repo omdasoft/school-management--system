@@ -14,11 +14,12 @@
         $stmt = $con->prepare($sql);
         $stmt->execute(array($class_id));
         $class = $stmt->fetch();
-        $sql = "SELECT re.*, sub.* FROM student_result as re LEFT JOIN subjects as sub on sub.id = re.subject_id and re.student_no = ? AND re.class_id = ?";
+        $sql = "SELECT re.*, sub.* FROM student_result as re JOIN subjects as sub on sub.id = re.subject_id and re.student_no = ? AND re.class_id = ?";
         $stmt = $con->prepare($sql);
         $stmt->execute(array($stud_no, $class_id));
         $results = $stmt->fetchAll();
         $result_count = $stmt->rowCount();
+        $sum = array_sum(array_column($results, 'mark'));
     ?>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -61,8 +62,8 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th rowspan="1" colspan="1">Subject Name</th>
-                                <th rowspan="1" colspan="1">Mark</th>
+                                <th rowspan="1" colspan="1">Result</th>
+                                <th rowspan="1" colspan="1"><?= $sum/$result_count ?> %</th>
                             </tr>
                         </tfoot>
                     </table>

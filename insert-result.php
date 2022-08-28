@@ -6,10 +6,10 @@
         $class_id = $_POST['class_id'];
         $stud_no = $_POST['stud_no'];       
         $subject_ids = implode(',', array_column($subjects, 'id'));
-        $qry = "SELECT * FROM student_result WHERE subject_id IN ($subject_ids) AND class_id = 2 AND student_no = 6";
+        $qry = "SELECT * FROM student_result WHERE subject_id IN ($subject_ids) AND class_id = ? AND student_no = ?";
         $stmt = $con->prepare($qry);
         //$qq = $stmt->debugDumpParams();
-        $stmt->execute();
+        $stmt->execute(array($class_id, $stud_no));
         $count = $stmt->rowCount();
         if($count > 0){
             $message = "results already added for this student";
@@ -21,10 +21,8 @@
             foreach($subjects as $subject) {
                 $stmt->execute(array($class_id, $subject['id'], $stud_no, $subject['mark']));
             }
-    
-            $message = "student result has been added";
-    
-            header('location:students.php?message='.$message);
+        
+            header('location:show-results.php?stud_no='.$stud_no);
             exit;
         }
 

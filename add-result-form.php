@@ -34,11 +34,12 @@
                     $stmt->execute(array($student['class_id']));
                     $class = $stmt->fetch();
                     $class_id = $class['id'];
-                    $sql = "SELECT sub.*,cl_sub.* FROM subjects AS sub JOIN class_subjects AS cl_sub ON sub.id = cl_sub.subject_id AND cl_sub.class_id = ?";
+                    $sql = "SELECT cl_sub.*, sub.* FROM class_subjects AS cl_sub JOIN subjects AS sub ON sub.id = cl_sub.subject_id AND cl_sub.class_id = ?";
                     $stmt = $con->prepare($sql);
                     $stmt->execute(array($class_id));
                     $subjects = $stmt->fetchAll();
                     $count = $stmt->rowCount();
+                    //var_dump($subjects);exit;
                     if($count == 0){
                         $message = "please add subjects to this class first";
                         header('location:classes.php?message='.$message);
