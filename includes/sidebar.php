@@ -54,10 +54,18 @@
             </a>
           </li> -->
           <li class="nav-item">
-            <a href="add-result-form.php" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
+            <a href="teachers.php" class="nav-link">
+              <i class="nav-icon fa fa-address-book"></i>
               <p>
-                Show Results          
+                Teachers          
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-fast-forward"></i>
+              <p>
+                Result Report         
               </p>
             </a>
           </li>

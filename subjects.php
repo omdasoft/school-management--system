@@ -53,7 +53,7 @@
                                     <tr role="row" class="odd">
                                         <td><?php echo $subject['name']; ?></td>
                                         <td><a href="edit-subject.php?subject_no=<?php echo $subject['id'] ?>" class="btn btn-warning btn-sm">Edit</a></td>
-                                        <td><a href="delete-subject.php?subject_no=<?php echo $subject['id'] ?>" class="btn btn-danger btn-sm">Delete</a></td>
+                                        <td><a href="delete-subject.php?subject_no=<?php echo $subject['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record ?')">Delete</a></td>
                                     </tr>
                                 <?php } //end foreach ?>
                             <?php } //end if ?>

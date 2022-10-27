@@ -61,7 +61,7 @@
                                         <td><?php echo $class['name']; ?></td>
                                         <td><a href="class-subjects.php?class_no=<?php echo $class['id'] ?>" class="btn btn-success btn-sm">Manage Subjects</a></td>
                                         <td><a href="edit-class.php?class_no=<?php echo $class['id'] ?>" class="btn btn-warning btn-sm">Edit</a></td>
-                                        <td><a href="delete-class.php?class_no=<?php echo $class['id'] ?>" class="btn btn-danger btn-sm <?php if($count > 0){echo "disabled";}else{echo "";} ?>">Delete</a></td>
+                                        <td><a href="delete-class.php?class_no=<?php echo $class['id'] ?>" class="btn btn-danger btn-sm <?php if($count > 0){echo "disabled";}else{echo "";} ?>" onclick="return confirm('Are you sure you want to delete this record ?')">Delete</a></td>
                                     </tr>
                                 <?php } //end foreach ?>
                             <?php } //end if ?>
