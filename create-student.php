@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <?php require_once('includes/header.php'); ?>
@@ -12,6 +13,14 @@
             $stmt = $con->prepare("SELECT * FROM class order by id asc");
             $stmt->execute();
             $rows = $stmt->fetchALL();
+            $count = $stmt->rowCount();
+
+            if($count == 0){
+                $message = "please add class first";
+                header('Location: students.php?message='.$message);
+                exit;
+            }
+               
         ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
